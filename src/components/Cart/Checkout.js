@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import classes from './Checkout.module.css';
 
 const isEmpty = value => value.trim() === '';
-const isFiveChars = value => value.trim().length === 5;
+const isFiveChars = value => value.trim().length >= 5;
 
 const Checkout = (props) => {
     const [formInputValidity, setFormInputValidity] = useState({
@@ -68,7 +68,7 @@ const Checkout = (props) => {
             <div className={`${classes.control} ${!formInputValidity.postalCode ? classes.invalid : ''}`}>
                 <label htmlFor='postal'>Postal Code</label>
                 <input type='text' id='postal' ref={postalCodeInputRef} />
-                {!formInputValidity.postalCode && <p>Please enter a valid postal code! (5 Characters long)</p>}
+                {!formInputValidity.postalCode && <p>Please enter a valid postal code! (Atleast 5 Characters long)</p>}
             </div>
             <div className={`${classes.control} ${!formInputValidity.city ? classes.invalid : ''}`}>
                 <label htmlFor='city'>City</label>
